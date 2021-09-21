@@ -1,4 +1,4 @@
-{% set version = "8.0.0" %}
+{% set version = "9.0.0" %}
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
@@ -10,11 +10,11 @@ source:
   url:
     - {{ cran_mirror }}/src/contrib/praznik_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/praznik/praznik_{{ version }}.tar.gz
-  sha256: df80e42fc3aab1a63a49aba4c4e9db79b4164f292f45579619c1ac835864f40c
+  sha256: 26973bba56f1fede12cebcb349f6f0c9a771d0f6b36bf720b223dbb8a4980d4d
 
 build:
   merge_build_host: true  # [win]
-  number: 1
+  number: 0
   rpaths:
     - lib/R/lib/
     - lib/
@@ -28,6 +28,7 @@ requirements:
     - {{ posix }}sed               # [win]
     - {{ posix }}coreutils         # [win]
     - {{ posix }}zip               # [win]
+    - cross-r-base {{ r_base }}    # [build_platform != target_platform]
   host:
     - _openmp_mutex              # [linux]
     - llvm-openmp                # [osx]
@@ -45,11 +46,9 @@ test:
 
 about:
   home: https://gitlab.com/mbq/praznik
-  license: GPL-3
-  summary: A toolbox of fast, native and parallel implementations of various information-based importance criteria estimators and feature selection filters based
-    on them, inspired by the overview by Brown, Pocock, Zhao and Lujan (2012) <http://www.jmlr.org/papers/v13/brown12a.html>. Contains, among other, minimum redundancy
-    maximal relevancy ('mRMR') method by Peng, Long and Ding (2005) <doi:10.1109/TPAMI.2005.159>; joint mutual information ('JMI') method by Yang and Moody (1999)
-    <http://papers.nips.cc/paper/1779-data-visualization-and-feature-selection-new-algorithms-for-nongaussian-data>; double input symmetrical relevance ('DISR') method
+  license: GPL-3.0-only
+  summary: A toolbox of fast, native and parallel implementations of various information-based importance criteria estimators and feature selection filters based on them, inspired by the overview by Brown, Pocock, Zhao and Lujan (2012) <http://www.jmlr.org/papers/v13/brown12a.html>. Contains, among other, minimum redundancy
+    maximal relevancy ('mRMR') method by Peng, Long and Ding (2005) <doi:10.1109/TPAMI.2005.159>; joint mutual information ('JMI') method by Yang and Moody (1999) <http://papers.nips.cc/paper/1779-data-visualization-and-feature-selection-new-algorithms-for-nongaussian-data>; double input symmetrical relevance ('DISR') method
     by Meyer and Bontempi  (2006) <doi:10.1007/11732242_9> as well as joint mutual information maximisation ('JMIM') method by Bennasar, Hicks and Setchi (2015) <doi:10.1016/j.eswa.2015.07.007>.
   license_family: GPL3
   license_file:
