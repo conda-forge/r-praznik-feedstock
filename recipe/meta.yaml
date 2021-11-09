@@ -1,4 +1,4 @@
-{% set version = "9.0.0" %}
+{% set version = "10.0.0" %}
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
@@ -10,7 +10,7 @@ source:
   url:
     - {{ cran_mirror }}/src/contrib/praznik_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/praznik/praznik_{{ version }}.tar.gz
-  sha256: 26973bba56f1fede12cebcb349f6f0c9a771d0f6b36bf720b223dbb8a4980d4d
+  sha256: 4f18d5831bb541314149eacdbed27b7105c104e90b8f3753f5a81ad51e372fa5
 
 build:
   merge_build_host: true  # [win]
